@@ -1,0 +1,35 @@
+doctype html
+html(lang= "ko")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pageTitle} | #{siteName}
+        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+    body
+        header
+            h1=pageTitle
+            h3 who is sexy? #{sexy}
+            nav
+                ul 
+                    li
+                        a(href="/") Home
+                    if loggedIn 
+                        li
+                            a(href="/videos/upload") Upload Video
+                        li 
+                            a(href="/users/edit") Edit Profile
+                        li 
+                            a(href="/users/logout") Log out
+                        li 
+                            a(href="/my-profile") #{loggedInUser.name}의 Profile
+                    else 
+                        li
+                            a(href="/join") Join
+                        li 
+                            a(href="/login") Login
+                    li 
+                        a(href="/search") Search
+                    
+        main
+            block content
+    include partials/footer.pug
