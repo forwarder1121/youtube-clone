@@ -1,0 +1,14 @@
+extends base
+
+block content
+    video(src="/"+video.fileUrl,controls,wdith=200,height=200)
+    div 
+        p=video.description
+        small=video.createdAt
+    div 
+        small Uploaded by  
+            a(href=`/users/${video.owner._id}`)=video.owner.name
+    if String(video.owner._id) === String(loggedInUser._id)
+        a(herf=`${video.id}/edit`) Edit Video &rarr;
+        br
+        a(herf=`${video.id}/delete`) Delete Video &rarr;
